@@ -39,6 +39,8 @@ case "$COMMAND" in
             --env="NVIDIA_VISIBLE_DEVICES=all" \
             --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
             --volume=$(pwd)/clearpath:/root/clearpath \
+            --volume=$(pwd)/husky_ws:/root/husky_ws \
+            --workdir="/root/husky_ws" \
             --net=host \
             $IMAGE_NAME
         
@@ -60,7 +62,7 @@ case "$COMMAND" in
         ;;
     *)
         echo "Invalid argument: $COMMAND"
-        echo "Usage: $0 [build|run|exec]"
+        echo "Usage: $0 [build|run|bash]"
         exit 1
         ;;
 esac

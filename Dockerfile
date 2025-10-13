@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
+
+
 # Set up locale
 RUN locale-gen en_US.UTF-8
 
@@ -32,22 +34,20 @@ RUN wget -qO /etc/ros/rosdep/sources.list.d/50-clearpath.list \
     rosdep update
 
 # Update package lists and install Clearpath packages + ros-gz
+
+#OBS: This might not work here! Using ROS-humble for octomap, please work!
 RUN apt-get update && apt-get install -y \
     ros-jazzy-clearpath-desktop \
     ros-jazzy-ros-gz \
     ros-jazzy-clearpath-simulator \
+    ros-jazzy-irobot-create-msgs \
+    ros-jazzy-octomap-ros \  
     python3-apt \
     nano \
     && rm -rf /var/lib/apt/lists/*
 
-# Create a workspace
-RUN mkdir -p /ros2_ws/src
-
-# Set the working directory
-WORKDIR /ros2_ws
-
 # Source ROS 2 setup script
-RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
 
 # Default command
 CMD ["bash"]
