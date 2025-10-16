@@ -19,8 +19,6 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-
-
 # Set up locale
 RUN locale-gen en_US.UTF-8
 
@@ -43,11 +41,16 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-irobot-create-msgs \
     ros-jazzy-octomap-ros \  
     python3-apt \
+    tmux \
     nano \
     && rm -rf /var/lib/apt/lists/*
 
+# Install pyproj via pip
+RUN pip install --no-cache-dir --break-system-packages pyproj
+
 # Source ROS 2 setup script
-RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
+COPY .bashrc /root/.bashrc
+COPY husky_ws/src/daep/tmux/tommy.tmux.conf /root/.tmux.conf
 
 # Default command
 CMD ["bash"]
