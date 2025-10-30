@@ -82,11 +82,13 @@ ros2 topic pub /husky0/goal daep_msgs/msg/Goal "{uuid: '123e4567-e89b-12d3-a456-
 
 ![alt text](image.png)
 
-
 ## Packages needed for daep and lrs_turtle4
 
 **SSH (if you have SSH keys set up):**
 ```
+git clone git@gitlab.liu.se:real-lab/daep.git
+git clone git@gitlab.liu.se:real-lab/daep_msgs.git
+git clone git@gitlab.liu.se:lrs2/lrs_turtle4.git
 git clone git@gitlab.liu.se:lrs2/lrs_util.git
 git clone git@gitlab.liu.se:lrs2/lrs_exec.git
 git clone git@gitlab.liu.se:lrs2/lrs_msgs_common.git
@@ -99,6 +101,9 @@ git clone git@gitlab.liu.se:lrs2/lrs_srvs_wdb.git
 
 **HTTPS (if you prefer HTTPS or don't have SSH keys or Access):**
 ```
+git clone https://gitlab.liu.se/real-lab/daep.git
+git clone https://gitlab.liu.se/real-lab/daep_msgs.git
+git clone git@gitlab.liu.se:lrs2/lrs_turtle4.git
 git clone https://gitlab.liu.se/lrs2/lrs_util.git
 git clone https://gitlab.liu.se/lrs2/lrs_exec.git
 git clone https://gitlab.liu.se/lrs2/lrs_msgs_common.git
