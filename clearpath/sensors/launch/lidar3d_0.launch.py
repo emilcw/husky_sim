@@ -20,7 +20,7 @@ def generate_launch_description():
         name='lidar3d_0_gz_bridge',
         executable='parameter_bridge',
         package='ros_gz_bridge',
-        namespace='a200_0000/sensors/',
+        namespace='a201_0000/sensors/',
         output='screen',
         parameters=
             [
@@ -39,7 +39,7 @@ def generate_launch_description():
         name='lidar3d_0_static_tf',
         executable='static_transform_publisher',
         package='tf2_ros',
-        namespace='a200_0000',
+        namespace='a201_0000',
         output='screen',
         arguments=
             [
@@ -49,7 +49,7 @@ def generate_launch_description():
                 ,
                 '--child-frame-id'
                 ,
-                'a200_0000/robot/base_link/lidar3d_0'
+                'a201_0000/robot/base_link/lidar3d_0'
                 ,
             ]
         ,

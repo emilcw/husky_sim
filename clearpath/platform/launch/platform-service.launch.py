@@ -35,7 +35,7 @@ def generate_launch_description():
                 (
                     'namespace'
                     ,
-                    'a200_0000'
+                    'a201_0000'
                 )
                 ,
                 (
@@ -58,26 +58,26 @@ def generate_launch_description():
         name='cmd_vel_bridge',
         executable='parameter_bridge',
         package='ros_gz_bridge',
-        namespace='a200_0000',
+        namespace='a201_0000',
         output='screen',
         arguments=
             [
-                'a200_0000/cmd_vel@geometry_msgs/msg/TwistStamped[gz.msgs.Twist'
+                'a201_0000/cmd_vel@geometry_msgs/msg/TwistStamped[gz.msgs.Twist'
                 ,
-                '/model/a200_0000/robot/cmd_vel@geometry_msgs/msg/TwistStamped]gz.msgs.Twist'
+                '/model/a201_0000/robot/cmd_vel@geometry_msgs/msg/TwistStamped]gz.msgs.Twist'
                 ,
             ]
         ,
         remappings=
             [
                 (
-                    'a200_0000/cmd_vel'
+                    'a201_0000/cmd_vel'
                     ,
                     'cmd_vel'
                 )
                 ,
                 (
-                    '/model/a200_0000/robot/cmd_vel'
+                    '/model/a201_0000/robot/cmd_vel'
                     ,
                     'platform/cmd_vel'
                 )
@@ -99,18 +99,18 @@ def generate_launch_description():
         name='odom_base_tf_bridge',
         executable='parameter_bridge',
         package='ros_gz_bridge',
-        namespace='a200_0000',
+        namespace='a201_0000',
         output='screen',
         arguments=
             [
-                '/model/a200_0000/robot/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'
+                '/model/a201_0000/robot/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'
                 ,
             ]
         ,
         remappings=
             [
                 (
-                    '/model/a200_0000/robot/tf'
+                    '/model/a201_0000/robot/tf'
                     ,
                     'tf'
                 )

@@ -16,8 +16,8 @@ def generate_launch_description():
     prefix = LaunchConfiguration('prefix')
 
     # Nodes
-    node_imu_0_gz_bridge = Node(
-        name='imu_0_gz_bridge',
+    node_gps_1_gz_bridge = Node(
+        name='gps_1_gz_bridge',
         executable='parameter_bridge',
         package='ros_gz_bridge',
         namespace='a201_0000/sensors/',
@@ -27,7 +27,7 @@ def generate_launch_description():
                 {
                     'use_sim_time': True
                     ,
-                    'config_file': '/root/clearpath/sensors/config/imu_0.yaml'
+                    'config_file': '/root/clearpath/sensors/config/gps_1.yaml'
                     ,
                 }
                 ,
@@ -35,8 +35,8 @@ def generate_launch_description():
         ,
     )
 
-    node_imu_0_static_tf = Node(
-        name='imu_0_static_tf',
+    node_gps_1_static_tf = Node(
+        name='gps_1_static_tf',
         executable='static_transform_publisher',
         package='tf2_ros',
         namespace='a201_0000',
@@ -45,11 +45,11 @@ def generate_launch_description():
             [
                 '--frame-id'
                 ,
-                'imu_0_link'
+                'gps_1_link'
                 ,
                 '--child-frame-id'
                 ,
-                'a201_0000/robot/base_link/imu_0'
+                'a201_0000/robot/base_link/gps_1'
                 ,
             ]
         ,
@@ -83,6 +83,6 @@ def generate_launch_description():
     # Create LaunchDescription
     ld = LaunchDescription()
     ld.add_action(launch_arg_prefix)
-    ld.add_action(node_imu_0_gz_bridge)
-    ld.add_action(node_imu_0_static_tf)
+    ld.add_action(node_gps_1_gz_bridge)
+    ld.add_action(node_gps_1_static_tf)
     return ld

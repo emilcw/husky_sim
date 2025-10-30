@@ -39,10 +39,14 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-ros-gz \
     ros-jazzy-clearpath-simulator \
     ros-jazzy-irobot-create-msgs \
-    ros-jazzy-octomap-ros \  
+    ros-jazzy-octomap-ros \
+    ros-jazzy-octomap-server \  
+    ros-jazzy-octomap-msgs \
+    ros-jazzy-octomap-rviz-plugins \
     python3-apt \
     tmux \
     nano \
+    evince \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pyproj via pip
