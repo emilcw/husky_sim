@@ -14,7 +14,7 @@ husky_sim/
 │   ├── lrs_srvs_ra/                   # 📦 LRS RA services
 │   ├── lrs_srvs_tst/                  # 📦 LRS test services
 │   ├── lrs_srvs_wdb/                  # 📦 LRS WDB services
-│   ├── lrs_turtle4/                   # 📦 LRS Turtlebot4 integration
+│   ├── lrs_turtle4/                   # 📦 LRS Turtlebot4/Husky integration
 │   ├── lrs_util/                      # 📦 LRS utilities
 |   ├── **WAQAS PACKAGE**              # Waqas code
 |   └── **VAHAB PACKAGE**              # Vahab code
