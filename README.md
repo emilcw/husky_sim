@@ -97,21 +97,36 @@ git clone https://gitlab.liu.se/lrs2/lrs_srvs_wdb.git
 
 colcon build --symlink-install
 ```
-**After this you should be able to launch RVIZ and TMUX**
-
-**NOTE DAEP IS NOT FULLY TESTED YET; ONLY PARTS OF IT**
+**After this you should be able to launch RVIZ**
 ```
 # Rviz for DAEP (Weird workaround to make octomap_rviz_plugin work)
+
+./run_jazzy.sh bash
+
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
 
-# TMUX
-./run_jazzy.sh bash
-~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --ns /husky0 --config warehouse_exploration.yaml
+# Add these topics (will get a .rviz file soon)
+/husky0/octomap_full
+/husky0/filtered_octomap
+/a201_0000/sensors/lidar3d_0/points (heavy to run for gpu)
+/husky0/daep_marker_array_visualization (Local planner)
+/husky0/rrt_star_marker_array (global planner)
+/husky0/bounds_visualization (bounds, path and frustum)
+/husky0/rrt_path (chosen global frontier)
+/husky0/frontier_marker_array (frontiers)
+/husky0/sampled_node (collision checking)
+/husky0/daep_marker_visualization (simulated, simple dynamic obstacle)
+```
 
-# Go to command to try manager.py
-ros2run
-ros2 topic pub /husky0/goal daep_msgs/msg/Goal "{uuid: '123e4567-e89b-12d3-a456-426614174000', x: 1.5, y: 2.0, z: 0.0, yaw: 1.57, linear_velocity: 0.5, angular_velocity: 0.2, is_last: false, initial_motion: false}"
+**and TMUX**
 
 ```
-![alt text](image.png)
+./run_jazzy.sh bash
 
+# Staic
+~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --ns /husky0 --config warehouse_exploration.yaml
+
+# Dynamic
+~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --ns /husky0 --config warehouse_exploration.yaml --dynamic-objects
+```
+![alt text](image.png)
