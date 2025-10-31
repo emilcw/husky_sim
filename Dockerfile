@@ -32,8 +32,6 @@ RUN wget -qO /etc/ros/rosdep/sources.list.d/50-clearpath.list \
     rosdep update
 
 # Update package lists and install Clearpath packages + ros-gz
-
-#OBS: This might not work here! Using ROS-humble for octomap, please work!
 RUN apt-get update && apt-get install -y \
     ros-jazzy-clearpath-desktop \
     ros-jazzy-ros-gz \
@@ -43,6 +41,7 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-octomap-server \  
     ros-jazzy-octomap-msgs \
     ros-jazzy-octomap-rviz-plugins \
+    ros-jazzy-tf-transformations \
     python3-apt \
     tmux \
     nano \
@@ -50,7 +49,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pyproj via pip
-RUN pip install --no-cache-dir --break-system-packages pyproj
+RUN pip install --no-cache-dir --break-system-packages pyproj rtree
 
 # Source ROS 2 setup script
 COPY .bashrc /root/.bashrc

@@ -40,7 +40,7 @@ ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
 
 
 # DAEP - INSTALL AND TEST
-To setup DAEP we need some additional packages. First, standing in `husky_ws`, create a ros2 workspace calles `husky_ws`.
+To setup DAEP we need some additional packages. First, standing in `husky_ws`, create a ros2 workspace called `husky_ws`.
 
 ```
 mkdir -p husky_ws/src
