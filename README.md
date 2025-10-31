@@ -77,7 +77,7 @@ husky_sim/
 ```
 git clone https://gitlab.liu.se/real-lab/daep.git
 git clone https://gitlab.liu.se/real-lab/daep_msgs.git
-git clone git@gitlab.liu.se:lrs2/lrs_turtle4.git
+git clone https://gitlab.liu.se/lrs2/lrs_turtle4.git
 git clone https://gitlab.liu.se/lrs2/lrs_util.git
 git clone https://gitlab.liu.se/lrs2/lrs_exec.git
 git clone https://gitlab.liu.se/lrs2/lrs_msgs_common.git

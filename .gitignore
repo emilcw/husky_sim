@@ -1,1 +1,3 @@
-clearpath/platform/launch/__pycache__/*
+clearpath/platform/launch/*
+clearpath/sensors/launch/*
+.vscode/
