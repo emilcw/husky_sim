@@ -103,13 +103,14 @@ colcon build --symlink-install
 
 ./run_jazzy.sh bash
 
-# Clearpath Version
-LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
-
 # DAEP Version (Using our own .rviz file, also included in tmux by default)
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch daep view_robot.launch.py namespace:=a201_0000
 
-# Add these topics (will get a .rviz file soon)
+
+# or Clearpath Version (Add in topics below)
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
+
+# Add these topics
 /husky0/octomap_full
 /husky0/filtered_octomap
 /a201_0000/sensors/lidar3d_0/points (heavy to run for gpu)
