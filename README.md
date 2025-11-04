@@ -33,6 +33,26 @@ ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
 
 # Also, here you can add the pointcloud as a topic to visualize
 ```
+## SIMULATION WORLDS
+```
+ros2 launch clearpath_gz simulation.launch.py world:=office
+
+Worlds:
+construction
+office
+orchard
+pipeline
+solar_farm
+warehouse
+
+#If you want to use our worlds, please call with alternative launch file.
+ros2 launch clearpath_gz simulation_daep.launch.py world:=warehouse_actor
+
+Worlds:
+warehouse_actor
+granso_22_medium_500k_32
+```
+https://gazebosim.org/docs/citadel/actors/
 
 # For more info on how to configure robot.yaml
 * https://docs.clearpathrobotics.com/docs/ros/config/yaml/overview/
@@ -104,10 +124,12 @@ colcon build --symlink-install
 ./run_jazzy.sh bash
 
 # DAEP Version (Using our own .rviz file, also included in tmux by default)
+ros2run
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch daep view_robot.launch.py namespace:=a201_0000
 
 
 # or Clearpath Version (Add in topics below)
+ros2run
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
 
 # Add these topics
@@ -135,3 +157,4 @@ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz vie
 ~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --ns /husky0 --config warehouse_exploration.yaml --dynamic-objects
 ```
 ![alt text](image.png)
+

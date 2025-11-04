@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-octomap-msgs \
     ros-jazzy-octomap-rviz-plugins \
     ros-jazzy-tf-transformations \
+    ros-jazzy-clearpath-nav2-demos \
     python3-apt \
     tmux \
     nano \
@@ -54,6 +55,10 @@ RUN pip install --no-cache-dir --break-system-packages pyproj rtree
 # Source ROS 2 setup script
 COPY .bashrc /root/.bashrc
 COPY husky_ws/src/daep/tmux/tommy.tmux.conf /root/.tmux.conf
+COPY husky_ws/src/daep/worlds/warehouse_actor.sdf /opt/ros/jazzy/share/clearpath_gz/worlds/warehouse_actor.sdf
+COPY husky_ws/src/daep/launch/simulation_daep.launch.py /opt/ros/jazzy/share/clearpath_gz/launch/simulation_daep.launch.py
+COPY husky_ws/src/daep/models/granso_22_medium_500k_32 /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32
+COPY husky_ws/src/daep/models/granso_22_medium_500k_32.sdf /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32.sdf
 
 # Default command
 CMD ["bash"]
