@@ -1,42 +1,40 @@
 # Husky Simulation Repository
 
-# SETUP SIMULATOR and RVIZ
+# FIRST TIME SETUP SIMULATOR and RVIZ
 
 1. Setup docker on your computer
 2. Clone the repo to root
 3. Go to repo, in my case `cd /home/emil/husky_sim`
-4. Follow steps below
-
+4. Build docker image
 ```
-# Build docker image
 ./run_jazzy.sh build
-
-# Start docker environment
-./run_jazzy.sh run
-
-# Simulator
-ros2 launch clearpath_gz simulation.launch.py
-
-For more info: https://docs.clearpathrobotics.com/docs/ros/tutorials/simulator/overview
-
-# In simulator window
-change cmd_vel to /a201_0000/cmd_vel
-
-# Now you should be able to control Husky
-# use keys to control husky
-
-# Start a new terminal (Ctrl + Shift + T)
-./run_jazzy.sh bash
-
-# Rviz
-ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
-
-# Also, here you can add the pointcloud as a topic to visualize
 ```
-## SIMULATION WORLDS
+5. Start docker environment
+```
+./run_jazzy.sh run
+```
+6. Start the Simulator: For more info: https://docs.clearpathrobotics.com/docs/ros/tutorials/simulator/overview
+```
+ros2 launch clearpath_gz simulation.launch.py
+```
+7. In the simulator window, change cmd_vel to /a201_0000/cmd_vel
+8. Switch to keyboard, now you should be able to drive around the husky with (AWSD)
+9. Start a new terminal (Ctrl + Shift + T)
+
+```
+./run_jazzy.sh bash
+```
+
+```
+ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
+```
+10. Add in pointcloud topic to visualize in Rviz
+
+## Clearpath Worlds
 ```
 ros2 launch clearpath_gz simulation.launch.py world:=office
-
+```
+```
 Worlds:
 construction
 office
@@ -44,20 +42,23 @@ orchard
 pipeline
 solar_farm
 warehouse
+```
+## Our Worlds
 
-#If you want to use our worlds, please call with alternative launch file.
+```
 ros2 launch clearpath_gz simulation_daep.launch.py world:=warehouse_actor
+```
 
+```
 Worlds:
 warehouse_actor
 granso_22_medium_500k_32
 ```
-https://gazebosim.org/docs/citadel/actors/
 
-# For more info on how to configure robot.yaml
+# For more info on how to configure robot.yaml and worlds
 * https://docs.clearpathrobotics.com/docs/ros/config/yaml/overview/
 * https://github.com/clearpathrobotics/clearpath_config/tree/jazzy/clearpath_config/sample
-
+* https://gazebosim.org/docs/citadel/actors/
 
 # DAEP - INSTALL AND TEST
 To setup DAEP we need some additional packages. First, standing in `husky_ws`, create a ros2 workspace called `husky_ws`.
@@ -93,7 +94,7 @@ husky_sim/
 └── README.md                          # This file
 ```
 
-**Please install these in src (so you get the structure above):**
+### Please install these in src (so you get the structure above):
 ```
 git clone https://gitlab.liu.se/real-lab/daep.git
 git clone https://gitlab.liu.se/real-lab/daep_msgs.git
@@ -108,7 +109,7 @@ git clone https://gitlab.liu.se/lrs2/lrs_srvs_tst.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_wdb.git
 ```
 
-**Then you shoule be able to build all packages**
+### Then you shoule be able to build all packages
 
 ```
 ./run_jazzy run (or bash)
@@ -117,22 +118,27 @@ git clone https://gitlab.liu.se/lrs2/lrs_srvs_wdb.git
 
 colcon build --symlink-install
 ```
-**After this you should be able to launch RVIZ**
+
+### Start the simulation
 ```
-# Rviz for DAEP (Weird workaround to make octomap_rviz_plugin work)
+ros2 launch clearpath_gz simulation_daep.launch.py world:=warehouse_actor
+```
 
+### Rviz - DAEP
+```
 ./run_jazzy.sh bash
-
-# DAEP Version (Using our own .rviz file, also included in tmux by default)
 ros2run
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch daep view_robot.launch.py namespace:=a201_0000
+```
 
-
-# or Clearpath Version (Add in topics below)
+### Rviz - Vanilla
+```
+./run_jazzy.sh bash
 ros2run
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz view_robot.launch.py namespace:=a201_0000
-
-# Add these topics
+```
+#### Add these topics to Rviz - Vanilla
+```
 /husky0/octomap_full
 /husky0/filtered_octomap
 /a201_0000/sensors/lidar3d_0/points (heavy to run for gpu)
@@ -145,16 +151,21 @@ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz vie
 /husky0/daep_marker_visualization (simulated, simple dynamic obstacle)
 ```
 
-**and TMUX**
-
+### TMUX
 ```
 ./run_jazzy.sh bash
+```
 
-# Staic
+#### Static
+```
 ~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --ns /husky0 --config warehouse_exploration.yaml
-
-# Dynamic
+```
+#### Dynamic
+```
 ~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --ns /husky0 --config warehouse_exploration.yaml --dynamic-objects
 ```
-![alt text](image.png)
+#### SLAM
+```
+~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --slam --ns /husky0 --config warehouse_exploration.yaml
+```
 
