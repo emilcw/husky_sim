@@ -50,7 +50,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pyproj via pip
-RUN pip install --no-cache-dir --break-system-packages pyproj rtree
+RUN pip install --no-cache-dir --break-system-packages pyproj rtree matplotlib numpy pandas tabulate
 
 # Source ROS 2 setup script
 COPY .bashrc /root/.bashrc

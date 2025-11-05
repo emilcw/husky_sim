@@ -40,6 +40,9 @@ case "$COMMAND" in
             --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
             --volume=$(pwd)/clearpath:/root/clearpath \
             --volume=$(pwd)/husky_ws:/root/husky_ws \
+            --volume=$(pwd)/visualize.py:/root/visualize.py \
+            --volume=$(pwd)/experiment_data:/root/experiment_data \
+            --volume=$(pwd)/visualized_data:/root/visualized_data \
             --workdir="/root/husky_ws" \
             --net=host \
             $IMAGE_NAME
