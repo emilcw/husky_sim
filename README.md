@@ -85,7 +85,7 @@ husky_sim/
 │   ├── lrs_srvs_wdb/                  # 📦 LRS WDB services
 │   ├── lrs_turtle4/                   # 📦 LRS Turtlebot4/Husky integration
 │   ├── lrs_util/                      # 📦 LRS utilities
-|   ├── **WAQAS PACKAGE**              # Waqas code
+|   ├── kiss-icp/                      # Waqas code
 |   └── **VAHAB PACKAGE**              # Vahab code
 ├── clearpath/                         # Clearpath Robotics configuration
 │   └── robot.yaml                     # Main robot configuration
@@ -107,6 +107,7 @@ git clone https://gitlab.liu.se/lrs2/lrs_srvs_exec.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_ra.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_tst.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_wdb.git
+git clone https://github.com/PRBonn/kiss-icp.git
 ```
 
 ### Then you shoule be able to build all packages
@@ -168,4 +169,3 @@ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz vie
 ```
 ~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --slam --ns /husky0 --config warehouse_exploration.yaml
 ```
-
