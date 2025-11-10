@@ -86,7 +86,7 @@ husky_sim/
 │   ├── lrs_turtle4/                   # 📦 LRS Turtlebot4/Husky integration
 │   ├── lrs_util/                      # 📦 LRS utilities
 |   ├── kiss-icp/                      # Waqas code
-|   └── **VAHAB PACKAGE**              # Vahab code
+|   └── yolo_gnn_refiner/              # Vahab code
 ├── clearpath/                         # Clearpath Robotics configuration
 │   └── robot.yaml                     # Main robot configuration
 ├── Dockerfile                         # Docker configuration
@@ -108,6 +108,7 @@ git clone https://gitlab.liu.se/lrs2/lrs_srvs_ra.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_tst.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_wdb.git
 git clone https://github.com/PRBonn/kiss-icp.git
+git clone https://gitlab.liu.se/emiwi87/yolo_gnn_refiner.git
 ```
 
 ### Then you shoule be able to build all packages

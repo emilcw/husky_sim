@@ -2,8 +2,8 @@
 FROM osrf/ros:jazzy-desktop-full-noble
 
 # Set environment variables
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install necessary dependencies
@@ -51,6 +51,19 @@ RUN apt-get update && apt-get install -y \
 
 # Install pyproj via pip
 RUN pip install --no-cache-dir --break-system-packages pyproj rtree matplotlib numpy pandas tabulate
+
+# Install computer vision dependencies for yolo_gnn_refiner
+RUN pip install --no-cache-dir --break-system-packages --ignore-installed \
+    torch torchvision torchaudio \
+    ultralytics \
+    torch-geometric \
+    opencv-python \
+    opencv-contrib-python
+
+# Install compatible setuptools version for colcon editable installs (AFTER other packages)
+# setuptools >= 80.0.0 breaks colcon --symlink-install, but we need >= 65.0.0 for --editable support
+# This must be last to ensure the correct version is used
+RUN pip install --no-cache-dir --break-system-packages --force-reinstall "setuptools>=65.0.0,<80.0.0"
 
 # Source ROS 2 setup script
 COPY .bashrc /root/.bashrc
