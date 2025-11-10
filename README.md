@@ -61,7 +61,7 @@ granso_22_medium_500k_32
 * https://gazebosim.org/docs/citadel/actors/
 
 # DAEP - INSTALL AND TEST
-To setup DAEP we need some additional packages. First, standing in `husky_ws`, create a ros2 workspace called `husky_ws`.
+To setup DAEP we need some additional packages. First, standing in `husky_sim`, create a ros2 workspace called `husky_ws`.
 
 ```
 mkdir -p husky_ws/src
