@@ -67,11 +67,11 @@ RUN pip install --no-cache-dir --break-system-packages --force-reinstall "setupt
 
 # Source ROS 2 setup script
 COPY .bashrc /root/.bashrc
-COPY husky_ws/src/daep/tmux/tommy.tmux.conf /root/.tmux.conf
-COPY husky_ws/src/daep/worlds/warehouse_actor.sdf /opt/ros/jazzy/share/clearpath_gz/worlds/warehouse_actor.sdf
-COPY husky_ws/src/daep/launch/simulation_daep.launch.py /opt/ros/jazzy/share/clearpath_gz/launch/simulation_daep.launch.py
-COPY husky_ws/src/daep/models/granso_22_medium_500k_32 /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32
-COPY husky_ws/src/daep/models/granso_22_medium_500k_32.sdf /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32.sdf
+COPY husky_ws/src/daep_husky/tmux/tommy.tmux.conf /root/.tmux.conf
+COPY husky_ws/src/daep_husky/worlds/warehouse_actor.sdf /opt/ros/jazzy/share/clearpath_gz/worlds/warehouse_actor.sdf
+COPY husky_ws/src/daep_husky/launch/simulation_daep.launch.py /opt/ros/jazzy/share/clearpath_gz/launch/simulation_daep.launch.py
+COPY husky_ws/src/daep_husky/models/granso_22_medium_500k_32 /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32
+COPY husky_ws/src/daep_husky/models/granso_22_medium_500k_32.sdf /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32.sdf
 
 # Default command
 CMD ["bash"]

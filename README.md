@@ -74,8 +74,8 @@ In this src-folder, we are going to install all packages (modules of code) that 
 ```
 husky_sim/
 ├── husky_ws/src/                      # ROS 2 workspace source packages
-│   ├── daep/                          # 🎯 Main DAEP exploration package (Emil)
-│   ├── daep_msgs/                     # 📦 Custom message definitions
+│   ├── daep_husky/                    # 🎯 Main DAEP exploration package (Emil)
+│   ├── daep_msgs_husky/               # 📦 Custom message definitions
 │   ├── lrs_exec/                      # 📦 LRS execution package
 │   ├── lrs_msgs_common/               # 📦 LRS common messages
 │   ├── lrs_msgs_tst/                  # 📦 LRS test messages
@@ -83,7 +83,7 @@ husky_sim/
 │   ├── lrs_srvs_ra/                   # 📦 LRS RA services
 │   ├── lrs_srvs_tst/                  # 📦 LRS test services
 │   ├── lrs_srvs_wdb/                  # 📦 LRS WDB services
-│   ├── lrs_turtle4/                   # 📦 LRS Turtlebot4/Husky integration
+│   ├── lrs_turtle4_husky/             # 📦 LRS Turtlebot4/Husky integration
 │   ├── lrs_util/                      # 📦 LRS utilities
 |   ├── kiss-icp/                      # Waqas code
 |   └── yolo_gnn_refiner/              # Vahab code
@@ -96,9 +96,9 @@ husky_sim/
 
 ### Please install these in src (so you get the structure above):
 ```
-git clone https://gitlab.liu.se/real-lab/daep.git
-git clone https://gitlab.liu.se/real-lab/daep_msgs.git
-git clone https://gitlab.liu.se/lrs2/lrs_turtle4.git
+git clone https://github.com/emilcw/daep_husky.git
+git clone https://github.com/emilcw/daep_msgs_husky.git
+git clone https://github.com/emilcw/lrs_turtle4_husky.git
 git clone https://gitlab.liu.se/lrs2/lrs_util.git
 git clone https://gitlab.liu.se/lrs2/lrs_exec.git
 git clone https://gitlab.liu.se/lrs2/lrs_msgs_common.git
@@ -108,7 +108,7 @@ git clone https://gitlab.liu.se/lrs2/lrs_srvs_ra.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_tst.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_wdb.git
 git clone https://github.com/PRBonn/kiss-icp.git
-git clone https://gitlab.liu.se/emiwi87/yolo_gnn_refiner.git
+git clone https://github.com/emilcw/yolo_gnn_refiner.git
 ```
 
 ### Then you shoule be able to build all packages
@@ -130,7 +130,7 @@ ros2 launch clearpath_gz simulation_daep.launch.py world:=warehouse_actor
 ```
 ./run_jazzy.sh bash
 ros2run
-LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch daep view_robot.launch.py namespace:=a201_0000
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch daep_husky view_robot.launch.py namespace:=a201_0000
 ```
 
 ### Rviz - Vanilla
@@ -160,13 +160,16 @@ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz vie
 
 #### Static
 ```
-~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --ns /husky0 --config warehouse_exploration.yaml
+ros2run
+~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --ns /husky0 --package daep_husky --config warehouse_exploration.yaml
 ```
 #### Dynamic
 ```
-~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --ns /husky0 --config warehouse_exploration.yaml --dynamic-objects
+ros2run
+~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --ns /husky0 --package daep_husky --config warehouse_exploration.yaml --dynamic-objects
 ```
 #### SLAM
 ```
-~/husky_ws/src/daep/tmux/daep.tmux --sim --husky --slam --ns /husky0 --config warehouse_exploration.yaml
+ros2run
+~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --slam --ns /husky0 --package daep_husky --config warehouse_exploration.yaml
 ```
