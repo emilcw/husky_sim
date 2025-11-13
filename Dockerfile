@@ -50,10 +50,13 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pyproj via pip
-RUN pip install --no-cache-dir --break-system-packages pyproj rtree matplotlib numpy pandas tabulate
+# Note: numpy<2.0 is required for cv_bridge compatibility
+RUN pip install --no-cache-dir --break-system-packages pyproj rtree matplotlib "numpy<2.0" pandas tabulate
 
 # Install computer vision dependencies for yolo_gnn_refiner
+# Force NumPy < 2.0 for cv_bridge compatibility (cv_bridge is compiled with NumPy 1.x)
 RUN pip install --no-cache-dir --break-system-packages --ignore-installed \
+    "numpy<2.0" \
     torch torchvision torchaudio \
     ultralytics \
     torch-geometric \
