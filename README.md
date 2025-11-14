@@ -158,12 +158,12 @@ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch clearpath_viz vie
 ./run_jazzy.sh bash
 ```
 
-#### Static
+#### Vanilla
 ```
 ros2run
 ~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --ns /husky0 --package daep_husky --config warehouse_exploration.yaml
 ```
-#### Dynamic
+#### Dynamic (Simple)
 ```
 ros2run
 ~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --ns /husky0 --package daep_husky --config warehouse_exploration.yaml --dynamic-objects

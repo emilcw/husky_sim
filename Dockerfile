@@ -57,11 +57,31 @@ RUN pip install --no-cache-dir --break-system-packages pyproj rtree matplotlib "
 # Force NumPy < 2.0 for cv_bridge compatibility (cv_bridge is compiled with NumPy 1.x)
 RUN pip install --no-cache-dir --break-system-packages --ignore-installed \
     "numpy<2.0" \
-    torch torchvision torchaudio \
+    torch torchvision torchaudio
+
+# 2. Install everything else
+RUN pip install --no-cache-dir --break-system-packages --ignore-installed \
     ultralytics \
     torch-geometric \
     opencv-python \
-    opencv-contrib-python
+    opencv-contrib-python \
+    filterpy \
+    lap
+
+# 3. Install OC-SORT from GitHub source
+# Clone the repository and install it manually since it's not on PyPI
+# The ocsort module needs to be accessible as "from ocsort.ocsort import OCSort"
+RUN git clone https://github.com/noahcao/OC_SORT.git /tmp/OC_SORT && \
+    cd /tmp/OC_SORT && \
+    # Get Python site-packages directory dynamically
+    PYTHON_SITE=$(python3 -c "import site; print(site.getsitepackages()[0])") && \
+    # Copy the entire ocsort_tracker directory to ocsort/ to make it importable
+    mkdir -p ${PYTHON_SITE}/ocsort && \
+    cp -r trackers/ocsort_tracker/* ${PYTHON_SITE}/ocsort/ && \
+    # Create __init__.py to make it a proper Python package
+    touch ${PYTHON_SITE}/ocsort/__init__.py && \
+    # The ocsort.py file contains the OCSort class, which should be importable as ocsort.ocsort
+    rm -rf /tmp/OC_SORT
 
 # Install compatible setuptools version for colcon editable installs (AFTER other packages)
 # setuptools >= 80.0.0 breaks colcon --symlink-install, but we need >= 65.0.0 for --editable support
