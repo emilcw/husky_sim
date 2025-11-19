@@ -28,7 +28,7 @@ case "$COMMAND" in
         # Allow container to access X11
         xhost +local:root
         
-        # Run the container (detached mode, so we can exec later)
+        # Run the container (detached mode, so we can bash later)
         docker run -it \
             --rm \
             --name $CONTAINER_NAME \
@@ -47,7 +47,7 @@ case "$COMMAND" in
             --net=host \
             $IMAGE_NAME
         
-        echo "Container '$CONTAINER_NAME' started. Use './run_husky.sh exec' to open another terminal shell in it."
+        echo "Container '$CONTAINER_NAME' started. Use './run_husky.sh bash' to open another terminal shell in it."
         exit 0
 
         ;;
