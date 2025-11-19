@@ -3,14 +3,14 @@
 # Usage:
 #   ./run_husky.sh build                # build the Docker image
 #   ./run_husky.sh run                  # run a new Docker container
-#   ./run_husky.sh exec                  # open a bash in the existing container
+#   ./run_husky.sh bash                  # open a bash in the existing container
 
 IMAGE_NAME="ros2-jazzy-ubuntu24"
 CONTAINER_NAME="jazzy_container"
 
 # Check argument
 if [ $# -lt 1 ]; then
-    echo "Usage: $0 [build|run|exec]"
+    echo "Usage: $0 [build|run|bash]"
     exit 1
 fi
 
