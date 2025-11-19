@@ -70,7 +70,12 @@ ros2 launch clearpath_gz simulation_daep.launch.py world:=warehouse_actor
 ```
 For more info on the simulator: https://docs.clearpathrobotics.com/docs/ros/tutorials/simulator/overview
 
-10. In a new terminal, start rviz (with octomap fix)
+10. Go to `/husky_sim/husky_ws/src/kiss-icp/ros/launch/odometry.launch.py`
+In the launch file:
+- Change `lidar_odom_frame` default value to `odom.`
+- Remove code related to `rviz_node` to avoid duplicate rviz windows.
+
+11. In a new terminal, start rviz (with octomap fix)
 ```
 ./run_jazzy.sh bash
 ros2run
