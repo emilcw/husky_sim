@@ -10,7 +10,7 @@
 mkdir -p husky_ws/src
 cd husky_ws/src
 ```
-5. Install these packages in `src` (Note: daep_husky, daep_husky_msgs, lrs_turtle4_husky, yolo_gnn_refiner are private repos, you need to be added to these to clone them).
+5. Install these packages in `src` (Note: daep_husky, daep_husky_msgs, lrs_turtle4_husky, yolo_gnn_refiner are private repos, you need to be added to these to clone them). You need SSH or Tokens for this.
 ```
 git clone https://github.com/emilcw/daep_husky.git
 git clone https://github.com/emilcw/daep_msgs_husky.git
