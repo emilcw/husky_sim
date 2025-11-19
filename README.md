@@ -32,6 +32,7 @@ husky_sim/
 ├── husky_ws/src/                      # ROS 2 workspace source packages
 │   ├── daep_husky/                    # 🎯 Main DAEP exploration package (Emil)
 │   ├── daep_msgs_husky/               # 📦 Custom message definitions
+|   ├── kiss-icp/                      # Waqas code
 │   ├── lrs_exec/                      # 📦 LRS execution package
 │   ├── lrs_msgs_common/               # 📦 LRS common messages
 │   ├── lrs_msgs_tst/                  # 📦 LRS test messages
@@ -41,7 +42,6 @@ husky_sim/
 │   ├── lrs_srvs_wdb/                  # 📦 LRS WDB services
 │   ├── lrs_turtle4_husky/             # 📦 LRS Turtlebot4/Husky integration
 │   ├── lrs_util/                      # 📦 LRS utilities
-|   ├── kiss-icp/                      # Waqas code
 |   └── yolo_gnn_refiner/              # Vahab code
 ├── clearpath/                         # Clearpath Robotics configuration
 │   └── robot.yaml                     # Main robot configuration
