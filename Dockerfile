@@ -66,7 +66,8 @@ RUN pip install --no-cache-dir --break-system-packages --ignore-installed \
     opencv-python \
     opencv-contrib-python \
     filterpy \
-    lap
+    lap \
+    open3d
 
 # 3. Install OC-SORT from GitHub source
 # Clone the repository and install it manually since it's not on PyPI

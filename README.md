@@ -25,6 +25,8 @@ git clone https://gitlab.liu.se/lrs2/lrs_srvs_tst.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_wdb.git
 git clone https://github.com/PRBonn/kiss-icp.git
 git clone https://github.com/emilcw/yolo_gnn_refiner.git
+git clone https://github.com/waqasa11i/dynamicPointDetector.git
+git clone https://github.com/waqasa11i/transformOdom.git
 ```
 You should now have the repository structure as visualized below:
 ```
@@ -32,6 +34,7 @@ husky_sim/
 ├── husky_ws/src/                      # ROS 2 workspace source packages
 │   ├── daep_husky/                    # 🎯 Main DAEP exploration package (Emil)
 │   ├── daep_msgs_husky/               # 📦 Custom message definitions
+|   ├── dynamicPointDetector           # Dynamic Filtering of Pointcloud to find dynamic obstacles (Waqas)
 |   ├── kiss-icp/                      # Waqas code
 │   ├── lrs_exec/                      # 📦 LRS execution package
 │   ├── lrs_msgs_common/               # 📦 LRS common messages
@@ -42,6 +45,7 @@ husky_sim/
 │   ├── lrs_srvs_wdb/                  # 📦 LRS WDB services
 │   ├── lrs_turtle4_husky/             # 📦 LRS Turtlebot4/Husky integration
 │   ├── lrs_util/                      # 📦 LRS utilities
+|   ├── transformOdom                  # Transform odom to robot starting position.
 |   └── yolo_gnn_refiner/              # Vahab code
 ├── clearpath/                         # Clearpath Robotics configuration
 │   └── robot.yaml                     # Main robot configuration
