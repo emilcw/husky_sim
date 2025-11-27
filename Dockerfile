@@ -43,10 +43,12 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-octomap-rviz-plugins \
     ros-jazzy-tf-transformations \
     ros-jazzy-clearpath-nav2-demos \
+    ros-jazzy-rmw-zenoh-cpp \
     python3-apt \
     tmux \
     nano \
     evince \
+    less \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pyproj via pip
