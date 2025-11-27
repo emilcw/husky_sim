@@ -99,11 +99,18 @@ ros2run
 ros2run
 ~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --ns /husky0 --package daep_husky --config warehouse_exploration.yaml --dynamic-objects
 ```
-#### SLAM
+#### SLAM (Remember to start Octomap seprate)
 ```
 ros2run
 ~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --slam --ns /husky0 --package daep_husky --config warehouse_exploration.yaml
 ```
+
+#### REAL (Rememberto start Octomap separate)
+```
+ros2run
+~/husky_ws/src/daep_husky/tmux/daep.tmux --real --husky --slam --ns /husky0 --package daep_husky --config wasp_proj_terra.yaml
+```
+
 ## Clearpath Worlds
 
 Example:
