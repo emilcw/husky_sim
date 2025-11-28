@@ -5,6 +5,10 @@ FROM osrf/ros:jazzy-desktop-full-noble
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
+ENV RMW_IMPLEMENTATION=rmw_zenoh_cpp
+ENV ZENOH_ROUTER_CONFIG_URI=/home/tompe/MY_ZENOH_ROUTER_CONFIG.json5
+ENV ROS_DOMAIN_ID=0
+
 
 # Install necessary dependencies
 RUN apt-get update && apt-get install -y \
@@ -43,6 +47,7 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-octomap-rviz-plugins \
     ros-jazzy-tf-transformations \
     ros-jazzy-clearpath-nav2-demos \
+    ros-jazzy-rmw-zenoh-cpp \    
     python3-apt \
     tmux \
     nano \
@@ -66,7 +71,8 @@ RUN pip install --no-cache-dir --break-system-packages --ignore-installed \
     opencv-python \
     opencv-contrib-python \
     filterpy \
-    lap
+    lap \
+    open3d
 
 # 3. Install OC-SORT from GitHub source
 # Clone the repository and install it manually since it's not on PyPI
@@ -95,6 +101,10 @@ COPY husky_ws/src/daep_husky/worlds/warehouse_actor.sdf /opt/ros/jazzy/share/cle
 COPY husky_ws/src/daep_husky/launch/simulation_daep.launch.py /opt/ros/jazzy/share/clearpath_gz/launch/simulation_daep.launch.py
 COPY husky_ws/src/daep_husky/models/granso_22_medium_500k_32 /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32
 COPY husky_ws/src/daep_husky/models/granso_22_medium_500k_32.sdf /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32.sdf
+COPY MY_ZENOH_ROUTER_CONFIG.json5 /root/MY_ZENOH_ROUTER_CONFIG.json5
+RUN mkdir /home/tompe
+RUN ln -s /root/MY_ZENOH_ROUTER_CONFIG.json5 /home/tompe/
+
 
 # Default command
 CMD ["bash"]
