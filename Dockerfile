@@ -52,6 +52,7 @@ RUN apt-get update && apt-get install -y \
     tmux \
     nano \
     evince \
+    less \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pyproj via pip

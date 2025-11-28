@@ -23,8 +23,10 @@ git clone https://gitlab.liu.se/lrs2/lrs_srvs_exec.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_ra.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_tst.git
 git clone https://gitlab.liu.se/lrs2/lrs_srvs_wdb.git
-git clone https://github.com/PRBonn/kiss-icp.git
+git clone https://github.com/emilcw/kiss-icp.git
 git clone https://github.com/emilcw/yolo_gnn_refiner.git
+git clone https://github.com/waqasa11i/dynamicPointDetector.git
+git clone https://github.com/waqasa11i/transformOdom.git
 ```
 You should now have the repository structure as visualized below:
 ```
@@ -32,6 +34,7 @@ husky_sim/
 ├── husky_ws/src/                      # ROS 2 workspace source packages
 │   ├── daep_husky/                    # 🎯 Main DAEP exploration package (Emil)
 │   ├── daep_msgs_husky/               # 📦 Custom message definitions
+|   ├── dynamicPointDetector           # Dynamic Filtering of Pointcloud to find dynamic obstacles (Waqas)
 |   ├── kiss-icp/                      # Waqas code
 │   ├── lrs_exec/                      # 📦 LRS execution package
 │   ├── lrs_msgs_common/               # 📦 LRS common messages
@@ -42,6 +45,7 @@ husky_sim/
 │   ├── lrs_srvs_wdb/                  # 📦 LRS WDB services
 │   ├── lrs_turtle4_husky/             # 📦 LRS Turtlebot4/Husky integration
 │   ├── lrs_util/                      # 📦 LRS utilities
+|   ├── transformOdom                  # Transform odom to robot starting position.
 |   └── yolo_gnn_refiner/              # Vahab code
 ├── clearpath/                         # Clearpath Robotics configuration
 │   └── robot.yaml                     # Main robot configuration
@@ -66,18 +70,17 @@ colcon build --symlink-install
 9. In a new terminal, start the simulator
 ```
 ./run_jazzy.sh bash
+```
+```
 ros2 launch clearpath_gz simulation_daep.launch.py world:=warehouse_actor
 ```
 For more info on the simulator: https://docs.clearpathrobotics.com/docs/ros/tutorials/simulator/overview
 
-10. Go to `/husky_sim/husky_ws/src/kiss-icp/ros/launch/odometry.launch.py`
-In the launch file:
-- Change `lidar_odom_frame` default value to `odom.`
-- Remove code related to `rviz_node` to avoid duplicate rviz windows.
-
 11. In a new terminal, start rviz (with octomap fix)
 ```
 ./run_jazzy.sh bash
+```
+```
 ros2run
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch daep_husky view_robot.launch.py namespace:=a201_0000
 ```
@@ -86,21 +89,28 @@ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/liboctomap.so ros2 launch daep_husky view_r
 #### Pose from simulation
 ```
 ./run_jazzy.sh bash
+```
+```
 ros2run
 ~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --ns /husky0 --package daep_husky --config warehouse_exploration.yaml
 ```
 #### Dynamic (Simple obstacles)
 ```
-./run_jazzy.sh bash
 ros2run
 ~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --ns /husky0 --package daep_husky --config warehouse_exploration.yaml --dynamic-objects
 ```
-#### SLAM
+#### SLAM (Remember to start Octomap seprate)
 ```
-./run_jazzy.sh bash
 ros2run
 ~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --slam --ns /husky0 --package daep_husky --config warehouse_exploration.yaml
 ```
+
+#### REAL (Rememberto start Octomap separate)
+```
+ros2run
+~/husky_ws/src/daep_husky/tmux/daep.tmux --real --husky --slam --ns /husky0 --package daep_husky --config wasp_proj_terra.yaml
+```
+
 ## Clearpath Worlds
 
 Example:
