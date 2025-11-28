@@ -106,9 +106,13 @@ ros2run
 ```
 
 #### REAL (Rememberto start Octomap separate)
+TODO:
+fix dynamicPoint topic to kiss/frame
+Test in simulation with map
+remove transformOdom
 ```
 ros2run
-~/husky_ws/src/daep_husky/tmux/daep.tmux --real --husky --slam --ns /husky0 --package daep_husky --config wasp_proj_terra.yaml
+~/husky_ws/src/daep_husky/tmux/realdaep.tmux --real --husky --slam --ns /husky0 --package daep_husky --config wasp_proj_terra.yaml
 ```
 
 ## Clearpath Worlds
