@@ -7,7 +7,7 @@ from tabulate import tabulate
 # Variables
 files = ["collision.csv", "coverage.csv", "logfile.csv", "path.csv"]
 #worlds = ["cafe", "maze", "apartment", "tunnel", "field", "auditorium", "crosswalks", "exhibition", "patrol", "granso", "granso2"]
-worlds = ["warehouse"]
+worlds = ["warehouse", "granso", "orchard"]
 modes = ["dynamic"] #"static", 
 planners = ["aep", "depr", "dep", "nbvp", "daep"]
 

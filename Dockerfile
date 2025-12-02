@@ -5,8 +5,10 @@ FROM osrf/ros:jazzy-desktop-full-noble
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
-ENV RMW_IMPLEMENTATION=rmw_zenoh_cpp
-ENV ZENOH_ROUTER_CONFIG_URI=/home/tompe/MY_ZENOH_ROUTER_CONFIG.json5
+
+# Only needed when we run on the real robot
+#ENV RMW_IMPLEMENTATION=rmw_zenoh_cpp
+#ENV ZENOH_ROUTER_CONFIG_URI=/home/tompe/MY_ZENOH_ROUTER_CONFIG.json5
 ENV ROS_DOMAIN_ID=0
 
 
@@ -102,9 +104,11 @@ COPY husky_ws/src/daep_husky/worlds/warehouse_actor.sdf /opt/ros/jazzy/share/cle
 COPY husky_ws/src/daep_husky/launch/simulation_daep.launch.py /opt/ros/jazzy/share/clearpath_gz/launch/simulation_daep.launch.py
 COPY husky_ws/src/daep_husky/models/granso_22_medium_500k_32 /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32
 COPY husky_ws/src/daep_husky/models/granso_22_medium_500k_32.sdf /opt/ros/jazzy/share/clearpath_gz/worlds/granso_22_medium_500k_32.sdf
-COPY MY_ZENOH_ROUTER_CONFIG.json5 /root/MY_ZENOH_ROUTER_CONFIG.json5
-RUN mkdir /home/tompe
-RUN ln -s /root/MY_ZENOH_ROUTER_CONFIG.json5 /home/tompe/
+
+# Only needed when we run on the real robot
+#COPY MY_ZENOH_ROUTER_CONFIG.json5 /root/MY_ZENOH_ROUTER_CONFIG.json5
+#RUN mkdir /home/tompe
+#RUN ln -s /root/MY_ZENOH_ROUTER_CONFIG.json5 /home/tompe/
 
 
 # Default command
