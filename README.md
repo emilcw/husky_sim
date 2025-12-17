@@ -1,6 +1,6 @@
 # Husky Simulation Repository
 
-# FIRST TIME SETUP SIMULATOR and RVIZ
+## SETUP
 
 1. Setup docker on your computer
 2. Clone the husky_sim to root
@@ -102,14 +102,10 @@ ros2run
 #### SLAM (Remember to start Octomap seprate)
 ```
 ros2run
-~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --slam --ns /husky0 --package daep_husky --config warehouse_exploration.yaml
+~/husky_ws/src/daep_husky/tmux/daep.tmux --sim --husky --slam --ns /husky0 --package daep_husky --config warehouse_slam_exploration.yaml
 ```
 
 #### REAL (Rememberto start Octomap separate)
-TODO:
-fix dynamicPoint topic to kiss/frame
-Test in simulation with map
-remove transformOdom
 ```
 ros2run
 ~/husky_ws/src/daep_husky/tmux/realdaep.tmux --real --husky --slam --ns /husky0 --package daep_husky --config wasp_proj_terra.yaml
@@ -130,6 +126,7 @@ pipeline
 solar_farm
 warehouse
 ```
+
 ### Our Worlds
 
 ```
